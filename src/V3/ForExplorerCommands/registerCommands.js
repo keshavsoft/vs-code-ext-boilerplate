@@ -1,9 +1,11 @@
 import * as vscode from 'vscode';
 
-import { initCommand } from './commands/initCommand.js';
+import initSimpleCommand from './commands/initSimple.js';
+import initSimpleWithUiCommand from './commands/initSimpleWithUi.js';
 
 export const registerAllCommands = (context) => {
-    const init = vscode.commands.registerCommand('extension.initJs', initCommand(context));
+    const initSimple = vscode.commands.registerCommand('extension.simple', initSimpleCommand(context));
+    const initSimpleWithUi = vscode.commands.registerCommand('extension.simpleWithCrud', initSimpleWithUiCommand(context));
 
-    context.subscriptions.push(init);
+    context.subscriptions.push(initSimple, initSimpleWithUi);
 };

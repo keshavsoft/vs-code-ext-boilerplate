@@ -4,7 +4,7 @@
   "description": "express boilerplate",
   "publisher": "KeshavSoft",
   "type": "module",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "engines": {
     "vscode": "^1.116.0"
   },
@@ -20,14 +20,23 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.initJs",
-        "title": "Express BoilerPlate"
+        "command": "extension.simple",
+        "title": "Express BoilerPlate with simple"
+      },
+      {
+        "command": "extension.simpleWithCrud",
+        "title": "Express BoilerPlate with simple crud functionality"
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "command": "extension.initJs",
+          "command": "extension.simple",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation@1"
+        },
+        {
+          "command": "extension.simpleWithCrud",
           "when": "explorerResourceIsFolder",
           "group": "navigation@1"
         }
@@ -50,6 +59,6 @@
     "@vscode/test-electron": "^2.5.2"
   },
   "dependencies": {
-    "@keshavsoft-org/express-todo": "^1.6.4"
+    "@keshavsoft-org/express-todo": "^1.7.3"
   }
 }
