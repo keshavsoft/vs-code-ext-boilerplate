@@ -1,60 +1,231 @@
-# EndPointGen VS Code Extension
+# KS Express Boilerplate
 
-## Overview
-
-**EndPointGen** is a Visual Studio Code extension developed by **KeshavSoft** focused on **AI-assisted server-side development using Node.js and Express**.  
-It helps developers quickly generate endpoints, sub-routes, and API structure directly from the Explorer context menu.
+Create a ready-to-use Express.js boilerplate project directly from VS Code.
 
 ---
 
-## Demo
+# Features
 
-![Demo](Docs/Information/demo.gif)
-
----
-
-## Installation
-
-1. Open VS Code  
-2. Go to Extensions  
-3. Search: **EndPointGen**  
-4. Click Install  
+- Generate Express boilerplate instantly
+- Simple project structure
+- CRUD-ready template option
+- Environment configuration included
+- Config-based architecture
+- Fast project bootstrap
+- Built for Node.js + Express development
 
 ---
 
-## Features
+# Installation
 
-- Generate Express.js API structure instantly  
-- Create endpoints in `app.js` with minimal effort  
-- Add modular sub-routes in `routes.js`  
-- Inject endpoint logic into `.js` files  
-- Context-aware right-click actions in Explorer  
-- Modular orchestration-based architecture  
+## From VS Code Marketplace
 
----
+Search:
 
-## Commands
+```bash
+ks-express-boilerplate
+```
 
-| Command                  | Title             | Description                                               |
-|--------------------------|-------------------|-----------------------------------------------------------|
-| extension.initJs         | Initiate Node API | Initializes base Express server structure                |
-| extension.createEndpoint | CreateEndpoint    | Creates a new route entry in `app.js`                    |
-| extension.addSubRoute    | AddSubRoute       | Registers sub-route modules in `routes.js`               |
-| extension.addEndPoint    | AddEndPoint       | Injects endpoint logic into selected `.js` file          |
+Publisher:
+
+```bash
+KeshavSoft
+```
+
+Install the extension.
 
 ---
 
-## Usage
+# Usage
 
-- Open your Node.js project in VS Code  
-- Right-click on a file or folder  
-- Select a command from the context menu  
-- Extension generates/updates files automatically  
+## Create Simple Boilerplate
+
+### Step 1
+
+Open or create an empty folder in VS Code.
 
 ---
 
-## Example
+### Step 2
 
-**Before**
-```js
-// No routes
+Right click on Explorer.
+
+---
+
+### Step 3
+
+Select:
+
+```bash
+Express BoilerPlate with simple
+```
+
+---
+
+## Create CRUD Boilerplate
+
+Right click on Explorer and select:
+
+```bash
+Express BoilerPlate with simple crud functionality
+```
+
+---
+
+# Generated Structure
+
+```bash
+project
+│
+├── .vscode
+├── Config
+├── Public
+├── .env
+├── .env.local
+├── app.js
+├── config.json
+├── configLoader.js
+├── package.json
+├── port.js
+├── routes.js
+└── server.js
+```
+
+---
+
+# Included Files
+
+| File | Purpose |
+|---|---|
+| app.js | Express app initialization |
+| server.js | Server startup |
+| routes.js | Main routes |
+| configLoader.js | Config handling |
+| port.js | Port configuration |
+| .env | Environment variables |
+| config.json | App configuration |
+
+---
+
+# Example Workflow
+
+## 1. Create Boilerplate
+
+Generate project from Explorer context menu.
+
+---
+
+## 2. Install Packages
+
+```bash
+npm install
+```
+
+---
+
+## 3. Start Server
+
+```bash
+npm start
+```
+
+or
+
+```bash
+node server.js
+```
+
+---
+
+# Requirements
+
+- VS Code `^1.116.0`
+- Node.js
+- npm
+
+---
+
+# Extension Commands
+
+| Command | Description |
+|---|---|
+| Express BoilerPlate with simple | Generate simple Express project |
+| Express BoilerPlate with simple crud functionality | Generate CRUD-ready project |
+
+---
+
+# Development
+
+## Clone Repository
+
+```bash
+git clone https://github.com/keshavsoft/ks-express-boilerplate.git
+```
+
+---
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## Run Extension
+
+Press:
+
+```bash
+F5
+```
+
+to open Extension Development Host.
+
+---
+
+# Package Extension
+
+```bash
+vsce package
+```
+
+---
+
+# Publish Extension
+
+```bash
+vsce publish
+```
+
+---
+
+# Repository
+
+https://github.com/keshavsoft/ks-express-boilerplate
+
+---
+
+# Marketplace Keywords
+
+```bash
+express
+nodejs
+boilerplate
+express boilerplate
+express starter
+crud boilerplate
+node api
+```
+
+---
+
+# Author
+
+KeshavSoft
+
+---
+
+# License
+
+MIT
