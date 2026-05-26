@@ -1,5 +1,7 @@
 # KS Express Boilerplate
 
+[Install from VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=KeshavSoft.vs-code-ext-boilerplate)
+
 Create a ready-to-use Express.js boilerplate project directly from VS Code.
 
 ---
@@ -26,11 +28,7 @@ Search:
 ks-express-boilerplate
 ```
 
-Publisher:
-
-```bash
-KeshavSoft
-```
+Publisher: KeshavSoft
 
 Install the extension.
 
@@ -159,7 +157,7 @@ node server.js
 ## Clone Repository
 
 ```bash
-git clone https://github.com/keshavsoft/ks-express-boilerplate.git
+git clone https://github.com/keshavsoft/vs-code-ext-boilerplate.git
 ```
 
 ---
@@ -202,11 +200,11 @@ vsce publish
 
 # Repository
 
-https://github.com/keshavsoft/ks-express-boilerplate
+https://github.com/keshavsoft/vs-code-ext-boilerplate
 
 ---
 
-# Marketplace Keywords
+# Keywords
 
 ```bash
 express
