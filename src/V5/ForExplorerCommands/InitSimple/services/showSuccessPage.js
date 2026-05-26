@@ -7,6 +7,7 @@ export function showSuccessPage() {
         import.meta.dirname,
         "../html/success.html"
     );
+
     const htmlPath1 = path.join(
         process.cwd(),
         "src",
