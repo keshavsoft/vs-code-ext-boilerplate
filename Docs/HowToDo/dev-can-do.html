@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Express BoilerPlate Developer Workflow
+    </title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:"Segoe UI",sans-serif;
+            background:#0f172a;
+            color:white;
+            overflow-x:hidden;
+        }
+
+        .container{
+            width:90%;
+            max-width:1300px;
+            margin:auto;
+        }
+
+        .hero{
+            padding:100px 0 80px;
+            background:
+            radial-gradient(circle at top left,
+            rgba(59,130,246,0.18),
+            transparent 35%),
+
+            radial-gradient(circle at bottom right,
+            rgba(139,92,246,0.18),
+            transparent 35%),
+
+            #0f172a;
+        }
+
+        .badge{
+            display:inline-block;
+            padding:12px 22px;
+            border-radius:50px;
+            background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.08);
+            color:#93c5fd;
+            font-size:14px;
+            letter-spacing:1px;
+            margin-bottom:35px;
+        }
+
+        h1{
+            font-size:72px;
+            line-height:1.1;
+            max-width:980px;
+            margin-bottom:35px;
+        }
+
+        h1 span{
+            color:#38bdf8;
+        }
+
+        .hero-content{
+            max-width:980px;
+        }
+
+        .hero-points{
+            list-style:none;
+        }
+
+        .hero-points li{
+            position:relative;
+            padding-left:38px;
+            margin-bottom:22px;
+            color:#cbd5e1;
+            line-height:1.9;
+            font-size:20px;
+        }
+
+        .hero-points li::before{
+            content:"✔";
+            position:absolute;
+            left:0;
+            top:0;
+            color:#38bdf8;
+            font-size:20px;
+            font-weight:bold;
+        }
+
+        .section{
+            padding:90px 0;
+        }
+
+        .section-title{
+            font-size:52px;
+            margin-bottom:25px;
+        }
+
+        .section-description{
+            max-width:950px;
+            color:#cbd5e1;
+            line-height:1.9;
+            font-size:18px;
+            margin-bottom:60px;
+        }
+
+        .timeline{
+            position:relative;
+        }
+
+        .timeline::before{
+            content:"";
+            position:absolute;
+            left:30px;
+            top:0;
+            width:3px;
+            height:100%;
+            background:rgba(56,189,248,0.25);
+        }
+
+        .timeline-item{
+            position:relative;
+            padding-left:100px;
+            margin-bottom:50px;
+        }
+
+        .timeline-dot{
+            position:absolute;
+            left:10px;
+            top:0;
+            width:42px;
+            height:42px;
+            border-radius:50%;
+            background:#38bdf8;
+            color:#00111a;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:bold;
+            font-size:18px;
+        }
+
+        .timeline-card{
+            background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:28px;
+            padding:35px;
+            transition:0.3s;
+        }
+
+        .timeline-card:hover{
+            transform:translateY(-6px);
+            border-color:#38bdf8;
+            box-shadow:0 20px 40px rgba(0,0,0,0.25);
+        }
+
+        .timeline-card h3{
+            font-size:30px;
+            margin-bottom:18px;
+        }
+
+        .timeline-card p{
+            color:#cbd5e1;
+            line-height:1.9;
+            font-size:17px;
+        }
+
+        .command-box{
+            margin-top:25px;
+            background:#071226;
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:16px;
+            padding:18px 22px;
+            overflow-x:auto;
+        }
+
+        .command-box code{
+            color:#38bdf8;
+            font-size:15px;
+            font-family:Consolas,monospace;
+        }
+
+        .architecture{
+            background:#020617;
+            border-radius:32px;
+            padding:45px;
+            border:1px solid rgba(255,255,255,0.08);
+            margin-top:50px;
+        }
+
+        .architecture h3{
+            font-size:40px;
+            margin-bottom:30px;
+        }
+
+        .code-box{
+            background:#071226;
+            border-radius:24px;
+            padding:35px;
+            border:1px solid rgba(255,255,255,0.06);
+            overflow-x:auto;
+        }
+
+        pre{
+            color:#bfdbfe;
+            line-height:2;
+            font-size:16px;
+            font-family:Consolas,monospace;
+        }
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
+            margin-top:40px;
+        }
+
+        .card{
+            background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:24px;
+            padding:32px;
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-6px);
+            border-color:#38bdf8;
+        }
+
+        .icon{
+            width:74px;
+            height:74px;
+            border-radius:22px;
+            background:linear-gradient(135deg,#38bdf8,#6366f1);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:30px;
+            margin-bottom:25px;
+        }
+
+        .card h3{
+            font-size:28px;
+            margin-bottom:16px;
+        }
+
+        .card p{
+            color:#cbd5e1;
+            line-height:1.8;
+        }
+
+        .footer{
+            padding:60px 0;
+            text-align:center;
+            color:#94a3b8;
+            font-size:16px;
+        }
+
+        @media(max-width:768px){
+
+            h1{
+                font-size:48px;
+            }
+
+            .section-title{
+                font-size:38px;
+            }
+
+            .timeline-item{
+                padding-left:75px;
+            }
+
+            .hero-points li{
+                font-size:18px;
+            }
+
+            pre{
+                font-size:14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="badge">
+                VS Code Extension • Express BoilerPlate Workflow
+            </div>
+
+            <h1>
+                What Developers Can Do After
+                Clicking
+                <span>
+                    Express BoilerPlate with Simple
+                </span>
+            </h1>
+
+            <div class="hero-content">
+
+                <ul class="hero-points">
+
+                    <li>
+                        Instantly generates a clean and ready-to-use
+                        Express.js backend architecture directly
+                        inside VS Code.
+                    </li>
+
+                    <li>
+                        Eliminates the need to manually create folders,
+                        initialize Express.js, configure routes,
+                        and organize backend project structure.
+                    </li>
+
+                    <li>
+                        Automatically prepares the foundation for
+                        backend API development and scalable
+                        Express.js application architecture.
+                    </li>
+
+                    <li>
+                        Provides pre-configured environment setup,
+                        route management,
+                        and frontend static file serving support.
+                    </li>
+
+                    <li>
+                        Helps developers move faster from
+                        project setup phase to actual
+                        application feature development.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Developer Workflow After BoilerPlate Generation
+            </h2>
+
+            <p class="section-description">
+
+                Once the extension generates the project structure,
+                developers can directly begin backend development
+                using the pre-configured Express.js architecture.
+
+            </p>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot">
+                        1
+                    </div>
+
+                    <div class="timeline-card">
+
+                        <h3>
+                            Start The Express Server
+                        </h3>
+
+                        <p>
+
+                            The generated project already contains
+                            server.js, app.js, port configuration,
+                            package.json, and backend initialization logic.
+
+                            Developers can directly install dependencies
+                            and run the Express.js application without
+                            manually configuring the server architecture.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot">
+                        2
+                    </div>
+
+                    <div class="timeline-card">
+
+                        <h3>
+                            Create API Routes
+                        </h3>
+
+                        <p>
+
+                            Developers can use
+                            <b>routes.js</b>
+                            to create REST API endpoints such as
+                            GET, POST, PUT, and DELETE routes
+                            for backend applications.
+
+                            This helps developers build APIs
+                            faster using the pre-generated
+                            Express.js structure.
+
+                            <br><br>
+
+                            Developers can also use the command below
+                            to generate API structures automatically.
+
+                        </p>
+
+                        <div class="command-box">
+
+                            <code>
+                                npx @keshavsoft/kschema-api-gen
+                            </code>
+
+                        </div>
+
+                        <p style="margin-top:20px;">
+
+                            By using this extension command,
+                            developers can automatically generate
+                            API structures, endpoint files,
+                            route configurations, and backend modules
+                            directly inside the Express.js project.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot">
+                        3
+                    </div>
+
+                    <div class="timeline-card">
+
+                        <h3>
+                            Manage Configurations
+                        </h3>
+
+                        <p>
+
+                            The generated project already contains
+                            .env files and configuration loaders.
+
+                            Developers can store environment variables,
+                            API keys, database URLs,
+                            application secrets,
+                            and configuration values
+                            in a clean and maintainable way.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot">
+                        4
+                    </div>
+
+                    <div class="timeline-card">
+
+                        <h3>
+                            Serve Frontend Files
+                        </h3>
+
+                        <p>
+
+                            The generated Public folder allows developers
+                            to serve static frontend files such as
+                            HTML, CSS, and JavaScript directly
+                            from the Express.js application.
+
+                            This makes it easier to build
+                            lightweight full-stack applications.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot">
+                        5
+                    </div>
+
+                    <div class="timeline-card">
+
+                        <h3>
+                            Build Real Applications
+                        </h3>
+
+                        <p>
+
+                            Developers can use the generated structure
+                            as the base foundation for building
+                            REST APIs, CRUD applications,
+                            authentication systems,
+                            dashboards, admin panels,
+                            and scalable backend services.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Generated BoilerPlate Structure
+            </h2>
+
+            <p class="section-description">
+
+                The VS Code extension automatically generates
+                the following Express.js project architecture.
+
+            </p>
+
+            <div class="architecture">
+
+                <h3>
+                    Simple Express.js Architecture
+                </h3>
+
+                <div class="code-box">
+
+<pre>
+📁 Folder
+│
+├── 📁 .vscode
+│
+├── 📁 Config
+│
+├── 📁 Public
+│   │
+│   └── 🌐 index.html
+│
+├── ⚙️ .env
+├── ⚙️ .env.local
+│
+├── 📄 app.js
+├── 📄 config.json
+├── 📄 configLoader.js
+│
+├── 📦 package-lock.json
+├── 📦 package.json
+│
+├── 📄 port.js
+├── 📄 routes.js
+└── 📄 server.js
+</pre>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                What Developers Can Build
+            </h2>
+
+            <p class="section-description">
+
+                The generated boilerplate architecture
+                can be extended into multiple types
+                of backend and full-stack applications.
+
+            </p>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="icon">
+                        🌐
+                    </div>
+
+                    <h3>
+                        REST APIs
+                    </h3>
+
+                    <p>
+                        Build scalable backend APIs
+                        using Express.js routing,
+                        middleware,
+                        and modular architecture.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="icon">
+                        🔐
+                    </div>
+
+                    <h3>
+                        Authentication Systems
+                    </h3>
+
+                    <p>
+                        Implement login systems,
+                        JWT authentication,
+                        user authorization,
+                        and protected API routes.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Dashboards
+                    </h3>
+
+                    <p>
+                        Use the Public folder
+                        to serve admin dashboards
+                        and frontend interfaces
+                        directly from Express.js.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="icon">
+                        🗂️
+                    </div>
+
+                    <h3>
+                        CRUD Applications
+                    </h3>
+
+                    <p>
+                        Extend the generated structure
+                        to create complete CRUD systems
+                        and database management applications.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="icon">
+                        ⚙️
+                    </div>
+
+                    <h3>
+                        Microservices
+                    </h3>
+
+                    <p>
+                        Use the lightweight architecture
+                        as the starting foundation
+                        for scalable microservice APIs.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="icon">
+                        🚀
+                    </div>
+
+                    <h3>
+                        Production Applications
+                    </h3>
+
+                    <p>
+                        Scale the generated boilerplate
+                        into real-world production-ready
+                        backend applications and services.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+
+        Express BoilerPlate with Simple helps developers
+        move faster from setup phase to real application development.
+
+    </footer>
+
+</body>
+
+</html>
