@@ -2,6 +2,8 @@
 
 Install from the VS Code Marketplace and reduce the repetitive setup problems that slow down Express.js backend development.
 
+[Install from VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=KeshavSoft.vs-code-ext-boilerplate)
+
 ---
 
 ## The Problem Most Express Developers Face
