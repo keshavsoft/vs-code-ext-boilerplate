@@ -1,124 +1,216 @@
-# KS Express Boilerplate
+# vs-code-ext-boilerplate 🚀
 
-Install from the VS Code Marketplace and reduce the repetitive setup problems that slow down Express.js backend development.
+Visual Studio Code extension for instantly generating Express.js boilerplate projects with simple architecture or CRUD functionality.
 
-[Install from VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=KeshavSoft.vs-code-ext-boilerplate)
-
----
-
-## The Problem Most Express Developers Face
-
-Starting an Express.js project sounds simple at first. But in real development, the first phase of every backend project often becomes repetitive, messy, and time-consuming.
-
-Before writing actual business logic, developers usually spend a large amount of time doing setup work like:
-
-* Creating folder structures manually
-* Configuring Express initialization
-* Creating routing architecture
-* Managing environment files
-* Organizing configuration handling
-* Separating server startup logic
-* Preparing CRUD folder structures
-* Repeating the same boilerplate code again and again
-
-This process becomes even more frustrating when working on multiple backend projects.
-
-
-### Repeating the Same Setup Every Time
-
-Every new project starts with nearly identical steps:
-
-* Initialize npm
-* Install Express
-* Create routes
-* Create server files
-* Configure ports
-* Setup environment variables
-* Create config loaders
-* Organize folders
-
-Developers repeatedly write infrastructure code instead of building actual features.
+Create complete backend starter templates directly from the VS Code Explorer right-click menu.
 
 ---
 
-### Inconsistent Project Structure
+# ✨ Overview
 
-Many beginner and intermediate developers struggle with:
+**vs-code-ext-boilerplate** is a Visual Studio Code extension developed by **KeshavSoft** to speed up Node.js and Express.js project initialization.
 
-* Where to place routes
-* How to separate configs
-* How to structure APIs
-* How to organize scalable Express architecture
-
-Without consistency, projects quickly become difficult to maintain.
+Instead of manually creating folders, routes, server files, public assets, and CRUD structure, the extension generates everything automatically with a single click.
 
 ---
 
-### Configuration Management Becomes Confusing
+# 🎯 Main Features
 
-Managing files like:
-
-* `.env`
-* `config.json`
-* port handling
-* server initialization
-
-can become scattered and difficult to maintain, especially for developers learning backend architecture.
+The extension provides two powerful boilerplate generators:
 
 ---
 
-### Beginners Struggle to Start Properly
+# ⚡ Express BoilerPlate with Simple
 
-Many developers learning Node.js and Express face questions like:
+Creates a lightweight Express.js starter project with:
 
-* How should an Express project actually be structured?
-* What files are required?
-* How should routes be separated?
-* Where should configuration logic go?
-* How do scalable projects organize their backend?
-
-Most tutorials explain small examples but not real project structure preparation.
+* Basic server setup
+* Public folder
+* `index.html`
+* Simple Express configuration
+* Minimal architecture for quick development
 
 ---
 
-### Too Much Time Spent Before Actual Coding
+## 🖼️ Generated Structure
 
-A large portion of backend development time is spent preparing the project instead of solving business problems.
-
-Developers often want to:
-
-* Start quickly
-* Focus on API logic
-* Build features immediately
-* Avoid repetitive initialization work
-
-But manual setup delays actual development.
-
----
-
-## What This Extension Helps Avoid
-
-KS Express Boilerplate is designed to reduce the repetitive friction involved in starting Express.js backend projects.
-
-Instead of manually preparing the same architecture repeatedly, developers can immediately begin working on actual backend functionality.
-
-The extension especially helps developers who:
-
-* Frequently create Express projects
-* Build CRUD APIs
-* Want a cleaner backend starting structure
-* Need faster project initialization
-* Want a more organized Express architecture
-* Are learning backend project organization
+```bash id="r7x2pa"
+ProjectName
+│
+├── Public
+│   └── index.html
+│
+├── app.js
+├── server.js
+├── routes.js
+├── package.json
+└── .env
+```
 
 ---
 
-## Marketplace
+## 🚀 Generated HTML Example
 
-Search in VS Code Marketplace:
+```html id="m4t8ya"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express BoilerPlate</title>
+</head>
+<body>
 
-**ks-express-boilerplate**
+    <h1>Express BoilerPlate with Simple</h1>
 
-Publisher:
+</body>
+</html>
+```
 
-**KeshavSoft**
+---
+
+# ⚡ Express BoilerPlate with Simple CRUD Functionality
+
+Creates a complete CRUD-ready Express.js template project.
+
+The extension automatically generates:
+
+* CRUD HTML UI
+* `V1` folder structure
+* API routing setup
+* Public assets
+* Backend starter architecture
+
+---
+
+## 🖼️ Generated CRUD Structure
+
+```bash id="u9f3kl"
+ProjectName
+│
+├── Public
+│   ├── index.html
+│   └── V1
+│       └── crud.html
+│
+├── app.js
+├── routes.js
+├── server.js
+├── package.json
+└── .env
+```
+
+---
+
+## 🚀 CRUD HTML Example
+
+```html id="w2n8cb"
+<h1>CRUD Functionality - V1</h1>
+```
+
+---
+
+# 🛠️ How It Works
+
+## Step 1
+
+Right-click on VS Code Explorer
+
+---
+
+## Step 2
+
+Choose one of the options:
+
+```bash id="z1k7xy"
+Express BoilerPlate with Simple
+```
+
+or
+
+```bash id="a8m5ru"
+Express BoilerPlate with simple crud functionality
+```
+
+---
+
+## Step 3
+
+The extension instantly generates the selected project template.
+
+---
+
+# ⚡ Features
+
+✅ One-click Express.js boilerplate generation
+✅ CRUD-ready project templates
+✅ Automatic folder structure creation
+✅ Public folder with UI pages
+✅ Beginner-friendly setup
+✅ Faster backend initialization
+✅ VS Code Explorer integration
+✅ Clean and modular architecture
+
+---
+
+# 📁 Folder Structure
+
+```bash id="n6y4qp"
+vs-code-ext-boilerplate
+│
+├── .vscode
+├── archive
+├── Docs
+├── node_modules
+├── src
+├── test
+│
+├── extension.js
+├── package.json
+├── README.md
+├── READMEv1.md
+├── READMEv2.md
+└── CHANGELOG.md
+```
+
+---
+
+# 💡 Why Use This Extension?
+
+* Avoid repetitive project setup
+* Quickly bootstrap Express applications
+* Generate CRUD-ready architecture instantly
+* Save development time
+* Maintain clean folder structure
+
+---
+
+# 🧠 Built With
+
+* Node.js
+* Express.js
+* JavaScript
+* HTML5
+* VS Code Extension API
+
+---
+
+# 📄 License
+
+MIT License
+
+---
+
+# 👨‍💻 Author
+
+Developed by **KeshavSoft**
+
+---
+
+# ⭐ Support
+
+If you like this project:
+
+* ⭐ Star the repository
+* 🍴 Fork the project
+* 🚀 Share with developers
