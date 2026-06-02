@@ -12,8 +12,7 @@ This project focuses on rapid backend initialization and CRUD-ready architecture
 
 The extension currently supports:
 
-* Simple Express.js boilerplate generation
-* CRUD-based boilerplate generation
+* Simple node and Express boilerplate generation
 * Automatic folder structure creation
 * Public UI initialization
 * Route setup generation
@@ -200,6 +199,7 @@ Developer should verify:
 * Maintain API version structure
 * Keep CRUD templates lightweight
 * Prefer reusable utility functions
+* Keep empty root place
 
 ---
 
