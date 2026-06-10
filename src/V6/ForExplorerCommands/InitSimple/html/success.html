@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        Express BoilerPlate with Simple
+    </title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:"Segoe UI",sans-serif;
+            background:#0f172a;
+            color:white;
+            overflow-x:hidden;
+        }
+
+        .container{
+            width:90%;
+            max-width:1300px;
+            margin:auto;
+        }
+
+        .hero{
+            padding:90px 0 70px;
+            background:
+            radial-gradient(circle at top left,
+            rgba(59,130,246,0.2),
+            transparent 35%),
+
+            radial-gradient(circle at bottom right,
+            rgba(139,92,246,0.2),
+            transparent 35%),
+
+            #0f172a;
+        }
+
+        .badge{
+            display:inline-block;
+            padding:12px 22px;
+            border-radius:50px;
+            background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.08);
+            color:#93c5fd;
+            font-size:14px;
+            letter-spacing:1px;
+            margin-bottom:35px;
+        }
+
+        .hero h1{
+            font-size:72px;
+            line-height:1.1;
+            max-width:900px;
+            margin-bottom:35px;
+        }
+
+        .hero h1 span{
+            color:#38bdf8;
+        }
+
+        .hero p{
+            max-width:950px;
+            color:#cbd5e1;
+            line-height:1.9;
+            font-size:20px;
+        }
+
+        .section{
+            padding:90px 0;
+        }
+
+        .section-title{
+            font-size:52px;
+            margin-bottom:25px;
+        }
+
+        .section-description{
+            max-width:950px;
+            color:#cbd5e1;
+            line-height:1.9;
+            font-size:18px;
+            margin-bottom:55px;
+        }
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
+        }
+
+        .card{
+            background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:26px;
+            padding:35px;
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+            border-color:#38bdf8;
+            box-shadow:0 20px 40px rgba(0,0,0,0.25);
+        }
+
+        .icon{
+            width:75px;
+            height:75px;
+            border-radius:20px;
+            background:linear-gradient(135deg,#38bdf8,#6366f1);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:32px;
+            margin-bottom:28px;
+        }
+
+        .card h3{
+            font-size:28px;
+            margin-bottom:18px;
+        }
+
+        .card p{
+            color:#cbd5e1;
+            line-height:1.8;
+        }
+
+        .steps{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+            gap:25px;
+            margin-top:50px;
+        }
+
+        .step{
+            background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:24px;
+            padding:30px;
+            transition:0.3s;
+        }
+
+        .step:hover{
+            transform:translateY(-6px);
+            border-color:#38bdf8;
+        }
+
+        .step-number{
+            width:58px;
+            height:58px;
+            border-radius:50%;
+            background:#38bdf8;
+            color:#00111a;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:22px;
+            font-weight:bold;
+            margin-bottom:22px;
+        }
+
+        .step h4{
+            font-size:24px;
+            margin-bottom:14px;
+        }
+
+        .step p{
+            color:#cbd5e1;
+            line-height:1.8;
+        }
+
+        .architecture{
+            background:#020617;
+            border-radius:32px;
+            padding:45px;
+            border:1px solid rgba(255,255,255,0.08);
+            margin-top:50px;
+        }
+
+        .architecture h3{
+            font-size:40px;
+            margin-bottom:30px;
+        }
+
+        .code-box{
+            background:#071226;
+            border-radius:22px;
+            padding:35px;
+            border:1px solid rgba(255,255,255,0.06);
+            overflow-x:auto;
+        }
+
+        pre{
+            color:#bfdbfe;
+            line-height:2;
+            font-size:16px;
+            font-family:Consolas, monospace;
+        }
+
+        .explanation-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:25px;
+            margin-top:40px;
+        }
+
+        .explain-card{
+            background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:24px;
+            padding:30px;
+            transition:0.3s;
+        }
+
+        .explain-card:hover{
+            transform:translateY(-6px);
+            border-color:#38bdf8;
+        }
+
+        .explain-card h4{
+            color:#38bdf8;
+            margin-bottom:15px;
+            font-size:24px;
+        }
+
+        .explain-card p{
+            color:#cbd5e1;
+            line-height:1.8;
+        }
+
+        .footer{
+            padding:60px 0;
+            text-align:center;
+            color:#94a3b8;
+            font-size:16px;
+        }
+
+        @media(max-width:768px){
+
+            .hero h1{
+                font-size:48px;
+            }
+
+            .section-title{
+                font-size:38px;
+            }
+
+            .architecture h3{
+                font-size:30px;
+            }
+
+            pre{
+                font-size:14px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="badge">
+                VS Code Extension • Express BoilerPlate with Simple
+            </div>
+
+            <h1>
+                Express BoilerPlate
+                <span>with Simple</span>
+            </h1>
+
+            <p>
+
+                Express BoilerPlate with Simple is a lightweight backend starter
+                architecture generated directly from the VS Code extension.
+
+                Instead of manually creating folders, configuring Express.js,
+                setting routes, initializing server files, loading environment
+                configurations, and organizing backend architecture, the extension
+                generates everything instantly with a single right click.
+
+                <br><br>
+
+                This setup is specially designed for developers who want a clean,
+                understandable, and production-style Express.js architecture
+                without unnecessary frontend complexity.
+
+                It helps beginners understand how real-world Express applications
+                are organized internally while also helping experienced developers
+                reduce repetitive setup work during project initialization.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Why This Simple BoilerPlate Is Needed
+            </h2>
+
+            <p class="section-description">
+
+                In most Express.js projects, developers repeatedly create
+                the same setup files such as server.js, app.js, routes.js,
+                environment files, configuration loaders, and package.json.
+
+                This repetitive process consumes valuable development time
+                before actual feature implementation even begins.
+
+                <br><br>
+
+                The VS Code extension solves this problem by automatically
+                generating a clean and modular backend architecture.
+
+                The primary goal is to provide a faster starting point
+                with better structure, maintainability, and organized
+                backend workflow.
+
+            </p>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Faster Setup
+                    </h3>
+
+                    <p>
+                        Generate the complete Express.js project structure
+                        instantly instead of manually creating repetitive
+                        backend files and folders.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="icon">
+                        📁
+                    </div>
+
+                    <h3>
+                        Clean Architecture
+                    </h3>
+
+                    <p>
+                        Organizes routes, configurations, server startup flow,
+                        environment management, and frontend public files
+                        into a clean modular structure.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="icon">
+                        🚀
+                    </div>
+
+                    <h3>
+                        Beginner Friendly
+                    </h3>
+
+                    <p>
+                        Helps developers understand how professional
+                        Express.js applications are structured internally
+                        in real-world backend projects.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                How To Execute The Command
+            </h2>
+
+            <p class="section-description">
+
+                The VS Code extension integrates directly into the
+                explorer context menu to provide a faster project
+                generation workflow.
+
+            </p>
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="step-number">
+                        1
+                    </div>
+
+                    <h4>
+                        Open VS Code
+                    </h4>
+
+                    <p>
+                        Launch Visual Studio Code and open the folder
+                        or workspace where you want to create the
+                        Express.js project.
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-number">
+                        2
+                    </div>
+
+                    <h4>
+                        Right Click Folder
+                    </h4>
+
+                    <p>
+                        Inside the VS Code explorer section,
+                        right click on the target folder.
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-number">
+                        3
+                    </div>
+
+                    <h4>
+                        Select Command
+                    </h4>
+
+                    <p>
+                        Choose the command named
+                        "Express BoilerPlate with simple"
+                        from the context menu.
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-number">
+                        4
+                    </div>
+
+                    <h4>
+                        Generate Architecture
+                    </h4>
+
+                    <p>
+                        The extension automatically generates the
+                        Express.js backend structure including routes,
+                        configs, server startup files, and public folder.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Generated Code Architecture
+            </h2>
+
+            <p class="section-description">
+
+                After executing the command, the extension automatically
+                generates a clean and beginner-friendly Express.js
+                project architecture.
+
+                The generated structure is simple, modular,
+                and easy to understand for backend development.
+
+            </p>
+
+            <div class="architecture">
+
+                <h3>
+                    Simple BoilerPlate Structure
+                </h3>
+
+                <div class="code-box">
+
+<pre>
+📁 Folder
+│
+├── 📁 .vscode
+│
+├── 📁 Config
+│
+├── 📁 Public
+│   │
+│   └── 🌐 index.html
+│
+├── ⚙️ .env
+├── ⚙️ .env.local
+│
+├── 📄 app.js
+├── 📄 config.json
+├── 📄 configLoader.js
+│
+├── 📦 package-lock.json
+├── 📦 package.json
+│
+├── 📄 port.js
+├── 📄 routes.js
+└── 📄 server.js
+</pre>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Understanding Important Files
+            </h2>
+
+            <p class="section-description">
+
+                Each generated file has a specific responsibility
+                in the Express.js application startup workflow.
+
+            </p>
+
+            <div class="explanation-grid">
+
+                <div class="explain-card">
+
+                    <h4>
+                        server.js
+                    </h4>
+
+                    <p>
+                        Main entry point of the application.
+                        Starts the Express.js server and listens
+                        on the configured application port.
+                    </p>
+
+                </div>
+
+                <div class="explain-card">
+
+                    <h4>
+                        app.js
+                    </h4>
+
+                    <p>
+                        Initializes the Express application,
+                        middleware setup, route loading,
+                        and application configuration flow.
+                    </p>
+
+                </div>
+
+                <div class="explain-card">
+
+                    <h4>
+                        routes.js
+                    </h4>
+
+                    <p>
+                        Contains API route definitions and
+                        connects backend endpoint logic
+                        with Express routing.
+                    </p>
+
+                </div>
+
+                <div class="explain-card">
+
+                    <h4>
+                        configLoader.js
+                    </h4>
+
+                    <p>
+                        Loads environment variables,
+                        application settings,
+                        and configuration values dynamically.
+                    </p>
+
+                </div>
+
+                <div class="explain-card">
+
+                    <h4>
+                        package.json
+                    </h4>
+
+                    <p>
+                        Stores project dependencies,
+                        npm scripts, and metadata required
+                        for project execution.
+                    </p>
+
+                </div>
+
+                <div class="explain-card">
+
+                    <h4>
+                        Public Folder
+                    </h4>
+
+                    <p>
+                        Contains frontend static files such as
+                        index.html that can be served directly
+                        from the Express application.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+
+        Built for faster Express.js backend development
+        using VS Code Extension automation.
+
+    </footer>
+
+</body>
+
+</html>
