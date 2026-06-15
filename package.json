@@ -4,7 +4,7 @@
   "description": "express boilerplate",
   "publisher": "KeshavSoft",
   "type": "module",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=KeshavSoft.vs-code-ext-boilerplate",
   "engines": {
     "vscode": "^1.116.0"
@@ -27,6 +27,10 @@
       {
         "command": "extension.simpleWithCrud",
         "title": "Express BoilerPlate with simple crud functionality"
+      },
+      {
+        "command": "extension.showHtml",
+        "title": "Express BoilerPlate Templates"
       }
     ],
     "menus": {
@@ -38,6 +42,11 @@
         },
         {
           "command": "extension.simpleWithCrud",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation@1"
+        },
+        {
+          "command": "extension.showHtml",
           "when": "explorerResourceIsFolder",
           "group": "navigation@1"
         }
@@ -60,6 +69,6 @@
     "@vscode/test-electron": "^2.5.2"
   },
   "dependencies": {
-    "@keshavsoft-org/express-todo": "^1.7.8"
+    "@keshavsoft-org/express-todo": "^1.10.5"
   }
 }
