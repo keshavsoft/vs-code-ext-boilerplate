@@ -29,7 +29,7 @@ const activateHtml = (context, uri) => {
                 });
 
                 await withMail({
-                    inProcessPath: uri.fsPath
+                    inProcessPath: userRootFolder
                 });
 
                 panel.webview.postMessage({
