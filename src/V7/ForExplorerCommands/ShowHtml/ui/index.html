@@ -21,31 +21,6 @@
             </p>
         </div>
 
-        <!-- Input Section -->
-        <div class="bg-[#252526] border border-gray-700 rounded-xl p-4 shadow-lg">
-
-            <label class="block text-sm font-medium text-gray-300 mb-2">
-                Table Name
-            </label>
-
-            <div class="flex gap-3">
-
-                <input id="tableName" type="text" placeholder="Customers" class="flex-1 px-4 py-2 rounded-lg bg-[#1e1e1e]
-                    border border-gray-600
-                    focus:border-blue-500
-                    focus:outline-none">
-
-                <button onclick="sendWithMail()" class="px-5 py-2 rounded-lg
-                    bg-blue-600 hover:bg-blue-500
-                    active:scale-95
-                    transition-all">
-                    With Mail
-                </button>
-
-            </div>
-
-        </div>
-
         <!-- Actions -->
         <div class="mt-6">
 
@@ -54,24 +29,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <button onclick="showAll()" class="group bg-[#252526]
-                    border border-gray-700
-                    rounded-xl p-5 text-left
-                    hover:border-blue-500
-                    hover:bg-[#2d2d30]
-                    transition-all">
-                    <div class="text-2xl mb-2">📄</div>
-
-                    <div class="font-medium">
-                        Show All
-                    </div>
-
-                    <div class="text-sm text-gray-400">
-                        Generate complete table CRUD
-                    </div>
-                </button>
-
-                <button onclick="send('showAllWithSerial')" class="group bg-[#252526]
+                <button onclick="sendWithMail()" class="group bg-[#252526]
                     border border-gray-700
                     rounded-xl p-5 text-left
                     hover:border-blue-500
@@ -80,62 +38,17 @@
                     <div class="text-2xl mb-2">🔢</div>
 
                     <div class="font-medium">
-                        Show With Serial
+                        with Mail
                     </div>
 
                     <div class="text-sm text-gray-400">
-                        Generate table with serial column
-                    </div>
-                </button>
-
-                <button onclick="send('search')" class="group bg-[#252526]
-    border border-gray-700
-    rounded-xl p-5 text-left
-    hover:border-blue-500
-    hover:bg-[#2d2d30]
-    transition-all">
-                    <div class="text-2xl mb-2">🔍</div>
-
-                    <div class="font-medium">
-                        Search
-                    </div>
-
-                    <div class="text-sm text-gray-400">
-                        Generate search UI
+                        for gmail only, as Api
                     </div>
                 </button>
             </div>
 
         </div>
 
-        <!-- Header Only -->
-        <div class="mt-6">
-
-            <div class="text-sm text-gray-400 mb-3">
-                Header only
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <button onclick="sendHeaderOnly()" class="group bg-[#252526]
-                    border border-gray-700
-                    rounded-xl p-5 text-left
-                    hover:border-blue-500
-                    hover:bg-[#2d2d30]
-                    transition-all">
-                    <div class="text-2xl mb-2">📄</div>
-
-                    <div class="font-medium">
-                        Header 10
-                    </div>
-
-                    <div class="text-sm text-gray-400">
-                        Header only with big font 10
-                    </div>
-                </button>
-
-            </div>
-
-        </div>
         <!-- Status -->
         <div id="status" class="hidden mt-6 rounded-xl border border-blue-600/30
     bg-blue-500/10 px-4 py-3 text-blue-300">
@@ -150,21 +63,9 @@
     <script>
         const vscode = acquireVsCodeApi();
 
-        function send(action) {
-            vscode.postMessage({ action });
-        }
-
-        function showAll() {
-            vscode.postMessage({
-                action: "showAll",
-                tableName: document.getElementById("tableName").value
-            });
-        };
-
         function sendWithMail() {
             vscode.postMessage({
-                action: "withMail",
-                tableName: document.getElementById("tableName").value
+                action: "withMail"
             });
         };
 
