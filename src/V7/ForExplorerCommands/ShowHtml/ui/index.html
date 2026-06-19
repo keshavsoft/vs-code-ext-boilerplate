@@ -45,6 +45,24 @@
                         for gmail only, as Api
                     </div>
                 </button>
+
+                <button onclick="tallyServer()" class="group bg-[#252526]
+                    border border-gray-700
+                    rounded-xl p-5 text-left
+                    hover:border-blue-500
+                    hover:bg-[#2d2d30]
+                    transition-all">
+                    <div class="text-2xl mb-2">🔢</div>
+
+                    <div class="font-medium">
+                        tallyServer
+                    </div>
+
+                    <div class="text-sm text-gray-400">
+                        for tallyServer : email and schema
+                    </div>
+                </button>
+
             </div>
 
         </div>
@@ -66,6 +84,12 @@
         function sendWithMail() {
             vscode.postMessage({
                 action: "withMail"
+            });
+        };
+
+        function tallyServer() {
+            vscode.postMessage({
+                action: "tallyServer"
             });
         };
 

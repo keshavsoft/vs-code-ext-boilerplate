@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import fs from 'fs';
 import path from 'path';
 
-import { withMail } from "@keshavsoft-org/express-todo";
+import { withMail, tallyServer } from "@keshavsoft-org/express-todo";
 
 const activateHtml = (context, uri) => {
     const panel = vscode.window.createWebviewPanel(
@@ -45,6 +45,32 @@ const activateHtml = (context, uri) => {
                 });
 
                 break;
+
+            case "tallyServer":
+
+                panel.webview.postMessage({
+                    type: "status",
+                    text: "⏳ Generating CRUD..."
+                });
+
+                await tallyServer({
+                    inProcessPath: userRootFolder
+                });
+
+                panel.webview.postMessage({
+                    type: "complete",
+                    html: `
+        <div class="font-semibold mb-2">
+            ✅ Generation Complete
+        </div>
+
+        <div><b>Action:</b> With Header</div>
+        <div><b>Output:</b> ${uri.fsPath}</div>
+    `
+                });
+
+                break;
+
         };
     });
 };
