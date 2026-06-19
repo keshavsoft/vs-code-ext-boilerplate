@@ -69,6 +69,6 @@
     "@vscode/test-electron": "^2.5.2"
   },
   "dependencies": {
-    "@keshavsoft-org/express-todo": "^1.12.5"
+    "@keshavsoft-org/express-todo": "^1.12.6"
   }
 }
