@@ -23,11 +23,6 @@ Right-click on VS Code Explorer
 ## Step 2
 
 Choose one of the options:
-```bash id="z1k7xy"
-Express BoilerPlate Templates
-```
-
-or
 
 ```bash id="z1k7xy"
 Express BoilerPlate with Simple
