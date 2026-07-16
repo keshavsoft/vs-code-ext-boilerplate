@@ -4,7 +4,7 @@
   "description": "express boilerplate",
   "publisher": "KeshavSoft",
   "type": "module",
-  "version": "1.8.1",
+  "version": "1.9.1",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=KeshavSoft.vs-code-ext-boilerplate",
   "engines": {
     "vscode": "^1.116.0"
