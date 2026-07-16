@@ -1,7 +1,6 @@
 export async function executeGenerationTask({
     panel,
     actionLabel,
-    tableName,
     inProcessPath,
     generateFunc,
     inFolderName
@@ -19,18 +18,6 @@ export async function executeGenerationTask({
             inProcessPath
         });
 
-        //       folderName = "",
-        // isAnnounce = false,
-        // showLog = false,
-        // inProcessPath
-
-        // await funcToRun({
-        //     showLog: true,
-        //     isAnnounce: true,
-        //     folderName: inFolderName || "",
-        //     toPath
-        // });
-
         panel.webview.postMessage({
             type: "complete",
             html: `
@@ -38,7 +25,6 @@ export async function executeGenerationTask({
                     ✅ Generation Complete
                 </div>
                 <div><b>Action:</b> ${actionLabel}</div>
-                ${tableName ? `<div><b>Table:</b> ${tableName}</div>` : ""}
                 <div><b>Output:</b> ${inProcessPath}</div>
             `
         });

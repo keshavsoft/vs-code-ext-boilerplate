@@ -1,11 +1,10 @@
 import { labManagement } from "@keshavsoft-org/express-todo";
 import { executeGenerationTask } from "../generatorService.js";
 
-const startFunc = async ({ panel, tableName, inProcessPath, inFolderName }) => {
-    await executeGenerationTask({
+const startFunc = ({ panel, inProcessPath, inFolderName }) => {
+    executeGenerationTask({
         panel,
-        actionLabel: "Add Table Name",
-        tableName,
+        actionLabel: "labManagement",
         inProcessPath,
         generateFunc: labManagement,
         inFolderName

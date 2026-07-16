@@ -1,29 +1,34 @@
 import addTableNameAction from "./actions/tallyServer.js";
 import labManagementAction from "./actions/labManagement.js";
+import sendWithMailAction from "./actions/sendWithMail.js";
 
 export async function handleWebviewMessage({ message, panel, port, inTargetPath }) {
 
     switch (message.action) {
+        case "sendWithMail":
+            await sendWithMailAction({
+                panel,
+                inProcessPath: inTargetPath,
+                inFolderName: message.inFolderName
+            });
+
+            break;
+
         case "tallyServer":
             await addTableNameAction({
                 panel,
-                tableName: message.tableName,
-                toPath,
-
-                inFolderName: message.inFolderName,
-                inTargetPath,
-                inPort: port
+                inProcessPath: inTargetPath,
+                inFolderName: message.inFolderName
             });
             break;
 
         case "labManagement":
-            await labManagementAction({
+            labManagementAction({
                 panel,
-                tableName: message.tableName,
                 inProcessPath: inTargetPath,
-                inFolderName: message.inFolderName,
-                inPort: port
+                inFolderName: message.inFolderName
             });
+
             break;
     };
 }
