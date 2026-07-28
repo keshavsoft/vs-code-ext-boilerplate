@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KS Express Boilerplate — VS Code Extension</title>
+<meta content="KS Express Boilerplate is a Visual Studio Code extension that generates Express.js starter projects from the Explorer right-click menu. Full walkthrough, generated structure, and features." name="description"/>
+<style>
+        :root {
+            --bg: #0b1120;
+            --surface: #1a2334;
+            --surface-2: #212c40;
+            --border: #2a3650;
+            --border-soft: #223049;
+            --text: #e6ebf5;
+            --text-muted: #9fb0c9;
+            --text-dim: #7688a3;
+            --accent: #4f9cf9;
+            --accent-soft: rgba(79, 156, 249, 0.12);
+            --green: #4ade80;
+            --amber: #fbbf24;
+            --radius: 14px;
+            --maxw: 900px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.86em;
+            background: var(--surface-2);
+            border: 1px solid var(--border-soft);
+            padding: 2px 6px;
+            border-radius: 6px;
+            color: #cbd8ef;
+        }
+
+        /* ---------- Top bar ---------- */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .topbar-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .brand .logo {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #4f9cf9, #3b6fd4);
+            display: grid;
+            place-items: center;
+            font-size: 15px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .topbar nav {
+            display: flex;
+            gap: 22px;
+            font-size: 15px;
+        }
+
+        .topbar nav a {
+            color: var(--text-muted);
+        }
+
+        .topbar nav a:hover {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        /* ---------- Layout ---------- */
+        .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 24px 96px;
+        }
+
+        section {
+            padding-top: 64px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin: 0 0 6px;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin: 32px 0 8px;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin: 14px 0;
+        }
+
+        .lead {
+            font-size: 19px;
+            color: #c7d3e8;
+        }
+
+        ul,
+        ol {
+            color: var(--text-muted);
+            padding-left: 22px;
+        }
+
+        li {
+            margin: 7px 0;
+        }
+
+        strong {
+            color: var(--text);
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            padding-top: 72px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin: 0 0 14px;
+        }
+
+        .hero .lead {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 26px 0 8px;
+        }
+
+        .badge {
+            font-size: 13px;
+            color: var(--text-muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 6px 14px;
+        }
+
+        .badge b {
+            color: var(--text);
+        }
+
+        .cta {
+            margin-top: 30px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #05122b;
+        }
+
+        .btn-primary:hover {
+            background: #6aabfa;
+            text-decoration: none;
+        }
+
+        .btn-ghost {
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* ---------- Callout ---------- */
+        .callout {
+            background: var(--accent-soft);
+            border: 1px solid rgba(79, 156, 249, 0.3);
+            border-left: 3px solid var(--accent);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 24px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            color: #d6e4fb;
+        }
+
+        /* ---------- Feature grid ---------- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .feature {
+            background: var(--surface);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .feature h4 {
+            margin: 0 0 6px;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .feature p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .feature .ic {
+            font-size: 20px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* ---------- Command table ---------- */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 22px;
+            font-size: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-soft);
+        }
+
+        .table th,
+        .table td {
+            text-align: left;
+            padding: 13px 16px;
+            border-bottom: 1px solid var(--border-soft);
+            vertical-align: top;
+        }
+
+        .table th {
+            background: var(--surface-2);
+            color: var(--text);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .table td {
+            color: var(--text-muted);
+        }
+
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table code {
+            white-space: nowrap;
+        }
+
+        /* ---------- Steps ---------- */
+        .step {
+            background: var(--surface);
+            border: 1px solid var(--border-soft);
+            border-radius: 18px;
+            padding: 28px;
+            margin-top: 28px;
+        }
+
+        .step-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 6px;
+        }
+
+        .step-num {
+            flex: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(79, 156, 249, 0.35);
+            color: var(--accent);
+            font-weight: 800;
+            display: grid;
+            place-items: center;
+            font-size: 16px;
+        }
+
+        .step-head h3 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .shot {
+            margin: 20px 0 4px;
+        }
+
+        .shot img {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #0d1526;
+        }
+
+        .shot figcaption {
+            margin-top: 10px;
+            font-size: 13.5px;
+            color: var(--text-dim);
+            text-align: center;
+            font-style: italic;
+        }
+
+        .detail {
+            margin-top: 20px;
+            display: grid;
+            gap: 0;
+        }
+
+        .detail .row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 14px;
+            align-items: baseline;
+            padding: 12px 0;
+            border-top: 1px solid var(--border-soft);
+        }
+
+        .detail .row:first-child {
+            border-top: none;
+        }
+
+        .detail .k {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-dim);
+        }
+
+        .detail .v {
+            color: var(--text-muted);
+        }
+
+        .detail .v strong {
+            color: var(--text);
+        }
+
+        /* ---------- Code blocks ---------- */
+        .code {
+            background: #0d1526;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            overflow-x: auto;
+            margin: 22px 0;
+        }
+
+        .code .cap {
+            font-size: 12.5px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 10px;
+        }
+
+        .code pre {
+            margin: 0;
+            font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #c7d3e8;
+            white-space: pre;
+        }
+
+        .code .c {
+            color: var(--text-dim);
+        }
+
+        .code .f {
+            color: var(--green);
+        }
+
+        /* ---------- Audience ---------- */
+        .who {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .who .card2 {
+            background: var(--surface);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .who h4 {
+            margin: 0 0 6px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .who p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        /* ---------- Audio placeholder ---------- */
+        .audio {
+            border: 1.5px dashed var(--border);
+            border-radius: 16px;
+            padding: 34px;
+            text-align: center;
+            background: repeating-linear-gradient(135deg, transparent, transparent 12px, rgba(255, 255, 255, 0.012) 12px, rgba(255, 255, 255, 0.012) 24px);
+        }
+
+        .audio .pill {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--amber);
+            background: rgba(251, 191, 36, 0.12);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            padding: 5px 12px;
+            border-radius: 999px;
+            margin-bottom: 14px;
+        }
+
+        .audio h3 {
+            margin: 0 0 8px;
+        }
+
+        .audio p {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            border-top: 1px solid var(--border-soft);
+            margin-top: 80px;
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--text-muted);
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 720px) {
+            body {
+                font-size: 16px;
+            }
+
+            .topbar nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .step {
+                padding: 20px;
+            }
+
+            .detail .row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+    </style>
+</head><body><header class="topbar">
+<div class="topbar-inner">
+<div class="brand">
+<span class="logo">KS</span>
+<span>KS Express Boilerplate</span>
+</div>
+<nav>
+<a href="#introduction">Introduction</a>
+<a href="#problem">Problem</a>
+<a href="#features">Features</a>
+<a href="#install">Install</a>
+<a href="#walkthrough">Walkthrough</a>
+<a href="#structure">Structure</a>
+</nav>
+</div>
+</header><main class="wrap"><section class="hero" id="top">
+<div class="eyebrow">Visual Studio Code Extension · Node.js &amp; Express</div>
+<h1>KS Express Boilerplate</h1>
+<p class="lead">
+                A Visual Studio Code extension that generates an Express.js starter project from the Explorer
+                right-click menu, so you don't have to build the same folders and files by hand every time.
+            </p>
+<div class="badges">
+<span class="badge">Publisher: <b>KeshavSoft</b></span>
+<span class="badge">Marketplace ID: <b>ks-express-boilerplate</b></span>
+<span class="badge">Version <b>1.10.2</b></span>
+<span class="badge">MIT License</span>
+</div>
+<div class="cta">
+<a class="btn btn-primary" href="https://marketplace.visualstudio.com/items?itemName=KeshavSoft.vs-code-ext-boilerplate">Install
+                    from Marketplace</a>
+<a class="btn btn-ghost" href="https://github.com/keshavsoft/vs-code-ext-boilerplate" target="_blank">GitHub Repository</a>
+</div>
+</section><section id="introduction">
+<div class="eyebrow">Introduction</div>
+<h2>What it is</h2>
+<p>
+                KS Express Boilerplate is a Visual Studio Code extension published by KeshavSoft. Once installed, it
+                adds a set of commands to the Explorer right-click menu. You right-click a folder, choose what you
+                want to generate, and the extension writes a ready-to-run Express.js project into that folder — the
+                entry file, the router, the configuration, and the server startup.
+            </p>
+<p>
+                Everything it produces is plain Node.js and Express. There is no separate framework and nothing
+                hidden: the generated files are ordinary JavaScript you can read, edit, and run.
+            </p>
+<h3>Why it exists</h3>
+<p>
+                The first part of nearly every Express project is the same repetitive setup — creating folders,
+                wiring up Express, adding a router, and preparing configuration. This extension exists to remove
+                that repetition, so you can start from a working structure instead of an empty folder.
+            </p>
+<h3>Who it is for</h3>
+<p>
+                It is aimed at developers who create Express projects often, developers building CRUD APIs, and
+                people learning how a backend project should be organized. Anyone who wants a faster, more
+                consistent start for an Express application will get use out of it.
+            </p>
+</section><section id="problem">
+<div class="eyebrow">The problem</div>
+<h2>The repetitive work it removes</h2>
+<p>
+                Starting an Express project sounds simple, but in practice the first phase is repetitive and
+                time-consuming. Before writing any real business logic, developers usually repeat the same steps:
+            </p>
+<ul>
+<li>Initialize npm and install Express</li>
+<li>Create the folder structure — deciding where routes, config, and public files go</li>
+<li>Write the server startup and port handling</li>
+<li>Set up environment files and a configuration loader</li>
+<li>Create the routing skeleton, again</li>
+</ul>
+<p>
+                On one project this is a minor annoyance. Across many projects it adds up, and for someone still
+                learning backend structure it is a source of inconsistency — routes, config, and server code end up
+                arranged differently every time, which makes each project harder to maintain.
+            </p>
+<div class="callout">
+<p><strong>The idea:</strong> replace that manual setup with a single menu action that always
+                    produces the same clean structure.</p>
+</div>
+</section><section id="features">
+<div class="eyebrow">Features</div>
+<h2>What the extension provides</h2>
+<p>The extension contributes three commands, all available from the Explorer right-click menu when you
+                right-click a folder:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Menu command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Express BoilerPlate with simple</strong></td>
+<td>Generates a simple Express project into the selected folder.</td>
+</tr>
+<tr>
+<td><strong>Express BoilerPlate with simple crud functionality</strong></td>
+<td>Generates a simple Express project that also includes CRUD functionality.</td>
+</tr>
+<tr>
+<td><strong>Express BoilerPlate Templates</strong></td>
+<td>Opens a panel where you can generate Express templates for different use cases.</td>
+</tr>
+</tbody>
+</table>
+<div class="grid">
+<div class="feature">
+<span class="ic">🖱️</span>
+<h4>Right-click generation</h4>
+<p>Create a project straight from the Explorer context menu — no terminal commands to type.</p>
+</div>
+<div class="feature">
+<span class="ic">📁</span>
+<h4>Consistent structure</h4>
+<p>Each generated project uses the same organized layout, with config, public, and API kept
+                        separate.</p>
+</div>
+<div class="feature">
+<span class="ic">🔌</span>
+<h4>Pre-wired entry file</h4>
+<p>The generated <code>app.js</code> already loads config, mounts routes, and starts the server.
+                    </p>
+</div>
+<div class="feature">
+<span class="ic">🧩</span>
+<h4>Template panel</h4>
+<p>The Templates command opens a panel to generate different starting points for different use
+                        cases.</p>
+</div>
+<div class="feature">
+<span class="ic">🌐</span>
+<h4>Optional browser open</h4>
+<p>The generated entry file can open the app in your browser when <code>OPEN_BROWSER</code> is set
+                        to <code>true</code>.</p>
+</div>
+<div class="feature">
+<span class="ic">🚀</span>
+<h4>Ready to run</h4>
+<p>The output is plain Node and Express, so the project runs without any extra setup.</p>
+</div>
+</div>
+</section></main><footer>
+<p>KS Express Boilerplate · Published by <strong>KeshavSoft</strong> · MIT License</p>
+<p><a href="#top">Back to top</a></p>
+</footer></body></html>
