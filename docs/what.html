@@ -575,7 +575,136 @@
 <a href="#structure">Structure</a>
 </nav>
 </div>
-</header><main class="wrap"><section class="hero" id="top"><div class="eyebrow">Documentation</div><h1>KS Express Boilerplate Documentation</h1><p class="lead">Choose a guide below.</p><div class="cta"><a class="btn btn-primary" href="what.html">What</a><a class="btn btn-ghost" href="how.html">How</a></div></section></main><footer>
+</header><main class="wrap"><section class="hero" id="top">
+<div class="eyebrow">Visual Studio Code Extension · Node.js &amp; Express</div>
+<h1>KS Express Boilerplate</h1>
+<p class="lead">
+                A Visual Studio Code extension that generates an Express.js starter project from the Explorer
+                right-click menu, so you don't have to build the same folders and files by hand every time.
+            </p>
+<div class="badges">
+<span class="badge">Publisher: <b>KeshavSoft</b></span>
+<span class="badge">Marketplace ID: <b>ks-express-boilerplate</b></span>
+<span class="badge">Version <b>1.10.2</b></span>
+<span class="badge">MIT License</span>
+</div>
+<div class="cta">
+<a class="btn btn-primary" href="https://marketplace.visualstudio.com/items?itemName=KeshavSoft.vs-code-ext-boilerplate">Install
+                    from Marketplace</a>
+<a class="btn btn-ghost" href="https://github.com/keshavsoft/vs-code-ext-boilerplate" target="_blank">GitHub Repository</a>
+</div>
+</section><section id="introduction">
+<div class="eyebrow">Introduction</div>
+<h2>What it is</h2>
+<p>
+                KS Express Boilerplate is a Visual Studio Code extension published by KeshavSoft. Once installed, it
+                adds a set of commands to the Explorer right-click menu. You right-click a folder, choose what you
+                want to generate, and the extension writes a ready-to-run Express.js project into that folder — the
+                entry file, the router, the configuration, and the server startup.
+            </p>
+<p>
+                Everything it produces is plain Node.js and Express. There is no separate framework and nothing
+                hidden: the generated files are ordinary JavaScript you can read, edit, and run.
+            </p>
+<h3>Why it exists</h3>
+<p>
+                The first part of nearly every Express project is the same repetitive setup — creating folders,
+                wiring up Express, adding a router, and preparing configuration. This extension exists to remove
+                that repetition, so you can start from a working structure instead of an empty folder.
+            </p>
+<h3>Who it is for</h3>
+<p>
+                It is aimed at developers who create Express projects often, developers building CRUD APIs, and
+                people learning how a backend project should be organized. Anyone who wants a faster, more
+                consistent start for an Express application will get use out of it.
+            </p>
+</section><section id="problem">
+<div class="eyebrow">The problem</div>
+<h2>The repetitive work it removes</h2>
+<p>
+                Starting an Express project sounds simple, but in practice the first phase is repetitive and
+                time-consuming. Before writing any real business logic, developers usually repeat the same steps:
+            </p>
+<ul>
+<li>Initialize npm and install Express</li>
+<li>Create the folder structure — deciding where routes, config, and public files go</li>
+<li>Write the server startup and port handling</li>
+<li>Set up environment files and a configuration loader</li>
+<li>Create the routing skeleton, again</li>
+</ul>
+<p>
+                On one project this is a minor annoyance. Across many projects it adds up, and for someone still
+                learning backend structure it is a source of inconsistency — routes, config, and server code end up
+                arranged differently every time, which makes each project harder to maintain.
+            </p>
+<div class="callout">
+<p><strong>The idea:</strong> replace that manual setup with a single menu action that always
+                    produces the same clean structure.</p>
+</div>
+</section><section id="features">
+<div class="eyebrow">Features</div>
+<h2>What the extension provides</h2>
+<p>The extension contributes three commands, all available from the Explorer right-click menu when you
+                right-click a folder:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Menu command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Express BoilerPlate with simple</strong></td>
+<td>Generates a simple Express project into the selected folder.</td>
+</tr>
+<tr>
+<td><strong>Express BoilerPlate with simple crud functionality</strong></td>
+<td>Generates a simple Express project that also includes CRUD functionality.</td>
+</tr>
+<tr>
+<td><strong>Express BoilerPlate Templates</strong></td>
+<td>Opens a panel where you can generate Express templates for different use cases.</td>
+</tr>
+</tbody>
+</table>
+<div class="grid">
+<div class="feature">
+<span class="ic">🖱️</span>
+<h4>Right-click generation</h4>
+<p>Create a project straight from the Explorer context menu — no terminal commands to type.</p>
+</div>
+<div class="feature">
+<span class="ic">📁</span>
+<h4>Consistent structure</h4>
+<p>Each generated project uses the same organized layout, with config, public, and API kept
+                        separate.</p>
+</div>
+<div class="feature">
+<span class="ic">🔌</span>
+<h4>Pre-wired entry file</h4>
+<p>The generated <code>app.js</code> already loads config, mounts routes, and starts the server.
+                    </p>
+</div>
+<div class="feature">
+<span class="ic">🧩</span>
+<h4>Template panel</h4>
+<p>The Templates command opens a panel to generate different starting points for different use
+                        cases.</p>
+</div>
+<div class="feature">
+<span class="ic">🌐</span>
+<h4>Optional browser open</h4>
+<p>The generated entry file can open the app in your browser when <code>OPEN_BROWSER</code> is set
+                        to <code>true</code>.</p>
+</div>
+<div class="feature">
+<span class="ic">🚀</span>
+<h4>Ready to run</h4>
+<p>The output is plain Node and Express, so the project runs without any extra setup.</p>
+</div>
+</div>
+</section></main><footer>
 <p>KS Express Boilerplate · Published by <strong>KeshavSoft</strong> · MIT License</p>
 <p><a href="#top">Back to top</a></p>
 </footer></body></html>
