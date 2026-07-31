@@ -100,6 +100,40 @@ vs-code-ext-boilerplate
 
 ---
 
+## 📄 Understanding app.js
+
+The `app.js` file is the main entry point for your Express.js backend project. It is responsible for initializing the application, loading the project configuration, registering all API routes, and preparing the server before it starts accepting requests.
+
+The EndPointGen extension uses `app.js` as the starting point for generating and wiring backend modules automatically. When you execute the **StartEndPoint** command, the extension analyzes the existing project structure and generates the required folders and route files while keeping the project organized.
+
+### Responsibilities of app.js
+
+- Initialize the Express application.
+- Load project configuration using `configLoader.js`.
+- Register all generated routes.
+- Connect newly created API modules automatically.
+- Organize middleware and application startup.
+- Maintain a clean and scalable project structure.
+- Act as the central integration point for generated code.
+
+### Typical Flow
+
+```
+app.js
+   │
+   ├── Load Configuration
+   │
+   ├── Register Routes
+   │
+   ├── Connect Generated APIs
+   │
+   ├── Initialize Express Middleware
+   │
+   └── Start Server
+```
+
+Keeping `app.js` as the central entry point allows the extension to generate new APIs without requiring manual route registration, making backend development faster, consistent, and easier to maintain.
+
 # 📄 License
 
 MIT License
